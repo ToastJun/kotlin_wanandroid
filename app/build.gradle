@@ -48,6 +48,7 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
     // navigation
     implementation "androidx.navigation:navigation-fragment-ktx:2.2.0"
+    implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'
 
     // test
     testImplementation 'junit:junit:4.12'

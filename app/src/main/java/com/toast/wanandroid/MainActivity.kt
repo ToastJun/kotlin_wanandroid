@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     fun initData() {
         // 初始化ViewModel
-        val viewModelProvider = ViewModelProvider(this)
+        val viewModelProvider = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.application))
         val userModel = viewModelProvider.get(UserModel::class.java)
         // 初始user
         val user = User()
