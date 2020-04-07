@@ -1,11 +1,16 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="Base.Theme.Sunflower" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/sunflower_yellow_700</item>
+        <item name="colorPrimaryDark">@color/sunflower_yellow_500</item>
+        <item name="colorAccent">@color/sunflower_yellow_700</item>
+        <item name="android:colorBackground">@color/sunflower_yellow_700</item>
     </style>
+
+    <style name="Theme.Sunflower" parent="Base.Theme.Sunflower"/>
+
+    <style name="Theme.Sunflower.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar"/>
 
 </resources>

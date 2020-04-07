@@ -32,7 +32,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
+    // work-runtime-ktx 2.1.0 and above now requires Java 8
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -49,6 +52,16 @@ dependencies {
     // navigation
     implementation "androidx.navigation:navigation-fragment-ktx:2.2.0"
     implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'
+
+    // room
+    implementation 'androidx.room:room-runtime:2.1.0'
+    implementation 'androidx.room:room-ktx:2.1.0'
+
+    // work
+    implementation 'androidx.work:work-runtime-ktx:2.1.0'
+
+    // gson
+    implementation "com.google.code.gson:gson:2.8.2"
 
     // test
     testImplementation 'junit:junit:4.12'

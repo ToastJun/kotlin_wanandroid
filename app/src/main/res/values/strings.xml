@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">WanAndroid</string>
+
+    <plurals name="watering_next">
+        <item quantity="one">water tomorrow</item>
+        <item quantity="other">water in %d days</item>
+    </plurals>
 </resources>
