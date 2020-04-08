@@ -1,10 +1,7 @@
 package com.toast.wanandroid.sunflower.data
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 /**
  * @author toast
@@ -19,6 +16,7 @@ interface GardenPlantingDao {
     @Query("SELECT EXISTS(SELECT 1 FROM garden_plantings WHERE plant_id = :plantId LIMIT 1)")
     fun isPlanted(plantId: String): LiveData<Boolean>
 
+    @Transaction
     @Query("SELECT * FROM plants WHERE id IN (SELECT DISTINCT(plant_id) FROM garden_plantings) ")
     fun getPlantedGardens(): LiveData<List<PlantAndGardenPlantings>>
 

@@ -1,9 +1,12 @@
 package com.toast.wanandroid.sunflower.utilities
 
 import android.content.Context
+import androidx.fragment.app.Fragment
 import com.toast.wanandroid.sunflower.data.AppDatabase
 import com.toast.wanandroid.sunflower.data.GardenPlantingRepository
+import com.toast.wanandroid.sunflower.data.PlantRepository
 import com.toast.wanandroid.sunflower.viewmodels.GardenPlantingListViewModelFactory
+import com.toast.wanandroid.sunflower.viewmodels.PlantListViewModelFactory
 
 /**
  * @author toast
@@ -16,9 +19,17 @@ object InjectorUtils {
         return GardenPlantingRepository.getInstance(AppDatabase.getInstance(context).gardenPlantingDao())
     }
 
+    private fun getPlantRepository(context: Context): PlantRepository {
+        return PlantRepository.getInstance(AppDatabase.getInstance(context).plantDao())
+    }
+
     fun providerGardenPlantingListViewModelFactory(
         context: Context
     ): GardenPlantingListViewModelFactory {
         return GardenPlantingListViewModelFactory(getGardenPlantingRepository(context))
+    }
+
+    fun providerPlantListViewModelFactory(fragment: Fragment): PlantListViewModelFactory {
+        return PlantListViewModelFactory(getPlantRepository(fragment.requireContext()), fragment)
     }
 }

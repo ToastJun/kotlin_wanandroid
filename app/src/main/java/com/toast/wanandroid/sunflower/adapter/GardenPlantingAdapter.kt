@@ -39,7 +39,7 @@ class GardenPlantingAdapter:
     class GardenPlantingHolder(private val binding: ItemRvGardenBinding) : RecyclerView.ViewHolder(binding.root) {
         init {
             binding.setClickListener { view ->
-                binding.viewModel.plantId.let { plantId ->
+                binding.viewModel?.plantId?.let { plantId ->
                     navigateToPlant(plantId, view)
                 }
             }

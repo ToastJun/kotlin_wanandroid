@@ -2,6 +2,8 @@ package com.toast.wanandroid.sunflower.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.toast.wanandroid.sunflower.GardenFragment
+import com.toast.wanandroid.sunflower.PlantListFragment
 
 /**
  * @author toast
@@ -18,8 +20,8 @@ class SunflowerPagerAdapter(fragment: Fragment): FragmentStateAdapter(fragment) 
      * 存储ViewPager对应的Fragment的Map
      */
     private val tabFragmentCreators: Map<Int, () -> Fragment> = mapOf(
-        MY_GARDEN_PAGE_INDEX to {Fragment()},
-        PLANT_LIST_PAGE_INDEX to {Fragment()}
+        MY_GARDEN_PAGE_INDEX to {GardenFragment()},
+        PLANT_LIST_PAGE_INDEX to {PlantListFragment()}
     )
 
     override fun getItemCount() = tabFragmentCreators.size
