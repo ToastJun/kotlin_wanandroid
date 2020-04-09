@@ -5,11 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.toast.wanandroid.R
 import com.toast.wanandroid.databinding.ItemRvPlantBinding
+import com.toast.wanandroid.sunflower.HomeViewPagerFragmentDirections
 import com.toast.wanandroid.sunflower.data.Plant
 
 /**
@@ -36,8 +38,16 @@ class PlantListAdapter(
     class ViewHolder(private val binding: ItemRvPlantBinding): RecyclerView.ViewHolder(binding.root) {
         init {
             binding.setClickListener {
-                Toast.makeText(binding.root.context, "点击", Toast.LENGTH_SHORT).show()
+                binding.plant?.let { plant ->
+                    navigateDetail(it, plant)
+                }
             }
+        }
+
+        private fun navigateDetail(view: View, plant: Plant) {
+            val directions =
+                HomeViewPagerFragmentDirections.actionViewPagerFragmentToPlantDetailFragment(plant.plantId)
+            view.findNavController().navigate(directions)
         }
 
         // 绑定数据到View

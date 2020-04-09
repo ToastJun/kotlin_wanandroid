@@ -5,4 +5,9 @@
         <item quantity="one">water tomorrow</item>
         <item quantity="other">water in %d days</item>
     </plurals>
+
+    <plurals name="watering_needs_suffix">
+        <item quantity="one">every day</item>
+        <item quantity="other">every %d day</item>
+    </plurals>
 </resources>
