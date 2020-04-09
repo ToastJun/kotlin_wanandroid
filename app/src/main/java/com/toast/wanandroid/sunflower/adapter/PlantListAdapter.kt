@@ -1,11 +1,13 @@
 package com.toast.wanandroid.sunflower.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -47,7 +49,13 @@ class PlantListAdapter(
         private fun navigateDetail(view: View, plant: Plant) {
             val directions =
                 HomeViewPagerFragmentDirections.actionViewPagerFragmentToPlantDetailFragment(plant.plantId)
-            view.findNavController().navigate(directions)
+            // 共享元素
+            val extras =
+                FragmentNavigatorExtras(binding.plantImage to "transition_detail_image")
+            val bundle = Bundle()
+            bundle.putString("plantId", plant.plantId)
+            view.findNavController().navigate(R.id.action_view_pager_fragment_to_plant_detail_fragment,
+                bundle, null, extras)
         }
 
         // 绑定数据到View
