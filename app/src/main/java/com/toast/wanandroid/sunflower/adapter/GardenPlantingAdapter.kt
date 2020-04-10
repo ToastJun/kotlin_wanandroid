@@ -5,11 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.toast.wanandroid.R
 import com.toast.wanandroid.databinding.ItemRvGardenBinding
+import com.toast.wanandroid.sunflower.HomeViewPagerFragmentDirections
 import com.toast.wanandroid.sunflower.data.PlantAndGardenPlantings
 import com.toast.wanandroid.sunflower.viewmodels.PlantAndGardenPlantingsViewModel
 
@@ -46,8 +48,10 @@ class GardenPlantingAdapter:
         }
 
         private fun navigateToPlant(plantId: String, view: View) {
-            Toast.makeText(binding.root.context.applicationContext, "plantId=$plantId", Toast.LENGTH_SHORT)
-                .show()
+            // 定义目的地
+            val directions =
+                HomeViewPagerFragmentDirections.actionViewPagerFragmentToPlantDetailFragment(plantId)
+            view.findNavController().navigate(directions)
         }
 
         fun bind(plantings: PlantAndGardenPlantings) {

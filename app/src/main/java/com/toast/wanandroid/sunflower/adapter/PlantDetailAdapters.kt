@@ -4,6 +4,7 @@ import android.text.method.LinkMovementMethod
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.toast.wanandroid.R
 
 /**
@@ -26,5 +27,14 @@ fun bindRenderHtml(textView: TextView, renderHtml: String?) {
         textView.movementMethod = LinkMovementMethod.getInstance()
     } else {
         textView.text = ""
+    }
+}
+
+@BindingAdapter("isGone")
+fun bindIsGone(fb: FloatingActionButton, isGone: Boolean?) {
+    if (isGone == null || isGone) {
+        fb.hide()
+    } else {
+        fb.show()
     }
 }
