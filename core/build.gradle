@@ -2,15 +2,15 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion BuildVersions.compileSdkVersion
+    buildToolsVersion BuildVersions.buildToolsVersion
 
 
     defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion BuildVersions.minSdkVersion
+        targetSdkVersion BuildVersions.targetSdkVersion
+        versionCode BuildVersions.versionCode
+        versionName BuildVersions.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -27,16 +27,16 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation Dependencies.kotlinStdlibJdk
+    implementation Dependencies.appcompat
+    implementation Dependencies.coreKtx
+    testImplementation Dependencies.junit
+    androidTestImplementation Dependencies.androidJunit
+    androidTestImplementation Dependencies.androidTestEspresso
 
     // kodein 基础组件
-    implementation "org.kodein.di:kodein-di-generic-jvm:$kodein_version"
+    implementation Dependencies.kodeinDiJvm
     // kodein Android扩展组件
-    implementation "org.kodein.di:kodein-di-framework-android-core:$kodein_version"
-    implementation "org.kodein.di:kodein-di-framework-android-x:$kodein_version"
+    implementation Dependencies.kodeinDiCore
+    implementation Dependencies.kodeinDiAndroidX
 }
