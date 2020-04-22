@@ -3,9 +3,7 @@ package com.toast.wanandroid
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.arch.core.util.Function
-import androidx.lifecycle.Observer
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.*
 import com.toast.wanandroid.viewmodel.User
 import com.toast.wanandroid.viewmodel.UserModel
 import kotlinx.android.synthetic.main.activity_main.*
@@ -43,5 +41,10 @@ class MainActivity : AppCompatActivity() {
         val nameStr = Transformations.map(userModel.currentUser) {
             it.name + it.age
         }
+
+        lifecycle.addObserver(object: LifecycleObserver {
+
+        })
     }
 }
+
