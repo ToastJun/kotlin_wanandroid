@@ -23,6 +23,13 @@ android {
         }
     }
 
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -35,8 +42,8 @@ dependencies {
     androidTestImplementation Dependencies.androidTestEspresso
 
     // kodein 基础组件
-    implementation Dependencies.kodeinDiJvm
+    api Dependencies.kodeinDiJvm
     // kodein Android扩展组件
-    implementation Dependencies.kodeinDiCore
-    implementation Dependencies.kodeinDiAndroidX
+    api Dependencies.kodeinDiCore
+    api Dependencies.kodeinDiAndroidX
 }

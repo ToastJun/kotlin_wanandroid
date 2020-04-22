@@ -20,6 +20,8 @@ object Versions {
     const val work = "2.1.0"
     const val glide = "4.10.0"
     const val gson = "2.8.2"
+
+    const val retrofit = "2.7.1"
 }
 
 object BuildVersions {
@@ -61,6 +63,9 @@ object Dependencies {
     const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
 
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
+
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val retrofitGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
 
     const val kodeinDiJvm = "org.kodein.di:kodein-di-generic-jvm:${Versions.kodein}"
     const val kodeinDiCore = "org.kodein.di:kodein-di-framework-android-core:${Versions.kodein}"

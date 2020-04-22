@@ -71,6 +71,11 @@ dependencies {
     // gson
     implementation Dependencies.gson
 
+    implementation Dependencies.retrofit
+    implementation Dependencies.retrofitGson
+
+    implementation project(':core')
+
     // test
     testImplementation Dependencies.junit
     androidTestImplementation Dependencies.androidJunit
