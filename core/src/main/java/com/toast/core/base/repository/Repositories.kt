@@ -6,15 +6,15 @@ package com.toast.core.base.repository
  * @description
  */
 
-class BaseRepositoryBoth<T: IRemoteDataSource, R: ILocalDataSource>(
+open class BaseRepositoryBoth<T: IRemoteDataSource, R: ILocalDataSource>(
     val remoteDataSource: T,
     val localDataSource: R
 ): IRepository
 
-class BaseRepositoryLocal<T: ILocalDataSource>(
+open class BaseRepositoryLocal<T: ILocalDataSource>(
     val localDataSource: T
 ): IRepository
 
-class BaseRepositoryRemote<T: IRemoteDataSource>(
+open class BaseRepositoryRemote<T: IRemoteDataSource>(
     val remoteDataSource: T
 ): IRepository

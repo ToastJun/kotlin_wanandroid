@@ -22,6 +22,7 @@ object Versions {
     const val gson = "2.8.2"
 
     const val retrofit = "2.7.1"
+    const val okhttp = "4.3.0"
 }
 
 object BuildVersions {
@@ -47,6 +48,8 @@ object Dependencies {
     const val constraintlayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintlayout}"
     const val material = "com.google.android.material:material:${Versions.material}"
 
+    const val logger = "com.orhanobut:logger:2.2.0"
+
     const val lifecycleExtensions = "androidx.lifecycle:lifecycle-extensions:${Versions.lifecycleExtensions}"
     const val lifecycleLivedata = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycleLivedata}"
     const val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycleViewModel}"
@@ -63,6 +66,9 @@ object Dependencies {
     const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
 
     const val gson = "com.google.code.gson:gson:${Versions.gson}"
+
+    const val okhttp = "com.squareup.okhttp3:okhttp:${Versions.okhttp}"
+    const val okhttpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
 
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
     const val retrofitGson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"

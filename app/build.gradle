@@ -71,9 +71,6 @@ dependencies {
     // gson
     implementation Dependencies.gson
 
-    implementation Dependencies.retrofit
-    implementation Dependencies.retrofitGson
-
     implementation project(':core')
 
     // test

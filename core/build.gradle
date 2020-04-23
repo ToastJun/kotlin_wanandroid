@@ -41,6 +41,14 @@ dependencies {
     androidTestImplementation Dependencies.androidJunit
     androidTestImplementation Dependencies.androidTestEspresso
 
+    api Dependencies.logger
+
+    api Dependencies.retrofit
+    api Dependencies.retrofitGson
+
+    api Dependencies.okhttp
+    api Dependencies.okhttpLogging
+
     // kodein 基础组件
     api Dependencies.kodeinDiJvm
     // kodein Android扩展组件
