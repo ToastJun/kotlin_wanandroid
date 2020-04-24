@@ -13,6 +13,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/ll_input"
         android:layout_marginTop="50dp"
         android:text="@string/slogan"
         android:textStyle="bold"
@@ -20,65 +21,70 @@
         android:textColor="@color/color_white"/>
 
     <LinearLayout
-        android:id="@+id/ll_account"
+        android:id="@+id/ll_input"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_slogan"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/ll_password"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:background="@drawable/shape_input_bg_black_transparent"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:orientation="vertical">
 
-        <ImageView
+        <LinearLayout
+            android:id="@+id/ll_account"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_email" />
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:background="@drawable/shape_input_bg_black_transparent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/et_account"
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:text="1111"
-            android:textColor="@color/color_white"
-            android:layout_marginStart="16dp"
-            android:textSize="12sp"
-            android:background="@android:color/transparent"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_email" />
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/et_account"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:text="1111"
+                android:textColor="@color/color_white"
+                android:layout_marginStart="16dp"
+                android:textSize="12sp"
+                android:background="@android:color/transparent"/>
 
-    <LinearLayout
-        android:id="@+id/ll_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ll_account"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/tv_login"
-        android:paddingStart="12dp"
-        android:paddingEnd="12dp"
-        android:background="@drawable/shape_input_bg_black_transparent"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
+        </LinearLayout>
 
-        <ImageView
+        <LinearLayout
+            android:id="@+id/ll_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_lock" />
+            android:layout_marginTop="20dp"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:background="@drawable/shape_input_bg_black_transparent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/et_password"
-            android:layout_width="200dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:textColor="@color/color_white"
-            android:textSize="16sp"
-            android:text="1243"
-            android:inputType="textPassword"
-            android:background="@android:color/transparent"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_lock" />
+
+            <EditText
+                android:id="@+id/et_password"
+                android:layout_width="200dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="16dp"
+                android:textColor="@color/color_white"
+                android:textSize="16sp"
+                android:text="1243"
+                android:inputType="textPassword"
+                android:background="@android:color/transparent"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -88,8 +94,8 @@
         android:layout_height="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ll_password"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ll_input"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:text="@string/login"
         android:textStyle="bold"
