@@ -1,50 +1,33 @@
 package com.toast.wanandroid
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.arch.core.util.Function
-import androidx.lifecycle.*
-import com.toast.wanandroid.viewmodel.User
-import com.toast.wanandroid.viewmodel.UserModel
-import kotlinx.android.synthetic.main.activity_main.*
+import com.toast.core.base.view.BaseActivity
+import com.toast.wanandroid.ui.login.LoginViewModel
+import com.toast.wanandroid.ui.login.kodeinLoginModule
+import org.kodein.di.Copy
+import org.kodein.di.Kodein
+import org.kodein.di.android.retainedKodein
+import org.kodein.di.generic.instance
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
+
+    // 创建一个不受Activity重启影响的 kodein 对象
+    override val kodein: Kodein by retainedKodein {
+        extend(parentKodein, copy = Copy.All)
+        import(kodeinLoginModule)
+    }
+
+    override val layoutId: Int = R.layout.activity_main
+
+    private val mViewModule: LoginViewModel by instance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         initData()
     }
 
     fun initData() {
-        // 初始化ViewModel
-        val viewModelProvider = ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(this.application))
-        val userModel = viewModelProvider.get(UserModel::class.java)
-        // 初始user
-        val user = User()
-        user.name = "Toast"
-        user.age = 27
-        userModel.addUser(user)
-
-        // 观察user变化
-        userModel.currentUser.observe(this, Observer<User> {
-            tvContent.text = it.toString()
-        })
-        // 改变user数据
-        btnChange.setOnClickListener {
-            user.name = "Toast.Jun"
-            user.age = 28
-//            userModel.addUser(user)
-            userModel.currentUser.value = user
-        }
-
-        val nameStr = Transformations.map(userModel.currentUser) {
-            it.name + it.age
-        }
-
-        lifecycle.addObserver(object: LifecycleObserver {
-
-        })
+        mViewModule.login()
     }
 }
 

@@ -3,6 +3,7 @@ package com.toast.wanandroid.repository
 import com.toast.core.base.repository.BaseRepositoryBoth
 import com.toast.core.base.repository.ILocalDataSource
 import com.toast.core.base.repository.IRemoteDataSource
+import com.toast.wanandroid.entity.ArticleInfoList
 import com.toast.wanandroid.entity.user.UserInfo
 import com.toast.wanandroid.http.Results
 import com.toast.wanandroid.http.processApiResponse
@@ -22,6 +23,13 @@ class LoginRepository(
     fun login(username: String, password: String): Results<UserInfo> {
         return remoteDataSource.login(username, password)
     }
+
+    suspend fun fetch(): ArticleInfoList? {
+        return when (val result = remoteDataSource.fetch()) {
+            is Results.Success<ArticleInfoList> -> result.data
+            is Results.Failure -> null
+        }
+    }
 }
 
 class LoginRemoteDataSource(private val serviceManager: ServiceManager): IRemoteDataSource {
@@ -29,6 +37,10 @@ class LoginRemoteDataSource(private val serviceManager: ServiceManager): IRemote
     fun login(username:String, password: String): Results<UserInfo> {
         val response = serviceManager.loginService.login(username, password)
         return  processApiResponse(response)
+    }
+
+    suspend fun fetch(): Results<ArticleInfoList> {
+        return processApiResponse(serviceManager.loginService.fetch())
     }
 }
 

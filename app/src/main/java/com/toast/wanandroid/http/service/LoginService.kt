@@ -1,5 +1,6 @@
 package com.toast.wanandroid.http.service
 
+import com.toast.wanandroid.entity.ArticleInfoList
 import com.toast.wanandroid.entity.user.UserInfo
 import com.toast.wanandroid.http.bean.BaseResponse
 import retrofit2.Response
@@ -30,4 +31,7 @@ interface LoginService {
      */
     @GET("/user/logout/json")
     fun logout(): Response<String>
+
+    @GET("/article/list/0/json")
+    suspend fun fetch(): Response<BaseResponse<ArticleInfoList>>
 }

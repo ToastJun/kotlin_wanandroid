@@ -3,6 +3,7 @@ package com.toast.wanandroid.base
 import android.content.Context
 import com.toast.core.base.BaseApplication
 import com.toast.wanandroid.di.httpClientModule
+import com.toast.wanandroid.di.serviceModule
 import org.kodein.di.Kodein
 import org.kodein.di.android.x.androidXModule
 import org.kodein.di.generic.bind
@@ -20,10 +21,10 @@ class ToastApp: BaseApplication() {
         import(androidXModule(this@ToastApp))
 
         import(httpClientModule)
+        import(serviceModule)
     }
 
     override fun onCreate() {
         super.onCreate()
-
     }
 }
