@@ -4,11 +4,10 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.orhanobut.logger.Logger
 import com.toast.core.base.viewmodel.BaseViewModel
+import com.toast.core.ext.postNext
+import com.toast.wanandroid.entity.ArticleInfoList
 import com.toast.wanandroid.repository.LoginRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 /**
  * @author toast
@@ -21,7 +20,7 @@ class LoginViewModel(
 ) : BaseViewModel() {
 
     // liveData
-    private val _stateLiveData = MutableLiveData<LoginViewState>()
+    private val _stateLiveData = MutableLiveData<LoginViewState>(LoginViewState.initial())
 
     val stateLive: LiveData<LoginViewState> = _stateLiveData
 
@@ -33,19 +32,15 @@ class LoginViewModel(
 
     fun login() {
         viewModelScope.launch {
-            Log.e("Login","loginBackground执行前 Thread name =" + Thread.currentThread().name)
-            loginBackground()
-            Log.e("Login","loginBackground执行后 Thread name =" + Thread.currentThread().name)
+            val result = loginBackground()
+            _stateLiveData.postNext {
+                it.copy(isLoading = false, articleInfoList = result)
+            }
         }
-        Log.e("Login","!!!!!!login Thread name =" + Thread.currentThread().name)
     }
 
-    suspend fun loginBackground() {
-        delay(1000)
-        Log.e("Login","loginBackground Thread name =" + Thread.currentThread().name)
-
-        val list = loginRepo.fetch()
-        Log.e("Login","loginBackground Thread name =" + Thread.currentThread().name + " ${list.toString()}")
+    suspend fun loginBackground(): ArticleInfoList? {
+        return loginRepo.fetch()
     }
 }
 
