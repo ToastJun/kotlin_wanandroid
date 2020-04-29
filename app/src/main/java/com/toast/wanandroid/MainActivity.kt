@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.DiffUtil.ItemCallback
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide.init
 import com.toast.core.base.view.BaseActivity
 import com.toast.core.ext.observe
 import com.toast.wanandroid.entity.ArticleInfo
@@ -41,11 +42,10 @@ class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        initView()
         initData()
     }
 
-    private fun initView() {
+    override fun initView() {
         rv_content.layoutManager = LinearLayoutManager(this)
         mAdapter = MainAdapter()
         rv_content.adapter = mAdapter

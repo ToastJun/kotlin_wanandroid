@@ -77,6 +77,8 @@ object Dependencies {
     const val kodeinDiCore = "org.kodein.di:kodein-di-framework-android-core:${Versions.kodein}"
     const val kodeinDiAndroidX = "org.kodein.di:kodein-di-framework-android-x:${Versions.kodein}"
 
+    const val smartrefresh = "com.scwang.smartrefresh:SmartRefreshLayout:1.1.2"
+
     const val junit = "junit:junit:4.12"
     const val androidJunit = "androidx.test.ext:junit:1.1.1"
     const val androidTestEspresso = "androidx.test.espresso:espresso-core:3.2.0"

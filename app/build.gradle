@@ -71,6 +71,9 @@ dependencies {
     // gson
     implementation Dependencies.gson
 
+    // 下拉刷新库
+    implementation Dependencies.smartrefresh
+
     implementation project(':core')
 
     // test

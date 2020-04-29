@@ -32,15 +32,10 @@ class LoginViewModel(
 
     fun login() {
         viewModelScope.launch {
-            val result = loginBackground()
             _stateLiveData.postNext {
-                it.copy(isLoading = false, articleInfoList = result)
+                it.copy(isLoading = false, articleInfoList = null)
             }
         }
-    }
-
-    suspend fun loginBackground(): ArticleInfoList? {
-        return loginRepo.fetch()
     }
 }
 

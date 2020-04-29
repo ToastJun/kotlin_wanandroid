@@ -24,12 +24,6 @@ class LoginRepository(
         return remoteDataSource.login(username, password)
     }
 
-    suspend fun fetch(): ArticleInfoList? {
-        return when (val result = remoteDataSource.fetch()) {
-            is Results.Success<ArticleInfoList> -> result.data
-            is Results.Failure -> null
-        }
-    }
 }
 
 class LoginRemoteDataSource(private val serviceManager: ServiceManager): IRemoteDataSource {
@@ -39,9 +33,6 @@ class LoginRemoteDataSource(private val serviceManager: ServiceManager): IRemote
         return  processApiResponse(response)
     }
 
-    suspend fun fetch(): Results<ArticleInfoList> {
-        return processApiResponse(serviceManager.loginService.fetch())
-    }
 }
 
 class LoginLocalDataSource(): ILocalDataSource {

@@ -1,5 +1,6 @@
 package com.toast.wanandroid.di
 
+import com.toast.wanandroid.http.service.ArticleService
 import com.toast.wanandroid.http.service.LoginService
 import com.toast.wanandroid.http.service.ServiceManager
 import com.toast.wanandroid.http.service.UserService
@@ -20,7 +21,7 @@ val serviceModule = Kodein.Module(SERVICE_MODULE_TAG) {
 
     // ServiceManager 使用单例
     bind<ServiceManager>() with singleton {
-        ServiceManager(instance(), instance())
+        ServiceManager(instance(), instance(), instance())
     }
 
     bind<LoginService>() with singleton {
@@ -29,5 +30,9 @@ val serviceModule = Kodein.Module(SERVICE_MODULE_TAG) {
 
     bind<UserService>() with singleton {
         instance<Retrofit>().create(UserService::class.java)
+    }
+
+    bind<ArticleService>() with singleton {
+        instance<Retrofit>().create(ArticleService::class.java)
     }
 }

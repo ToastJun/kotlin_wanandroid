@@ -13,5 +13,8 @@ abstract class BaseActivity: InjectionActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutId)
+        initView()
     }
+
+    abstract fun initView()
 }

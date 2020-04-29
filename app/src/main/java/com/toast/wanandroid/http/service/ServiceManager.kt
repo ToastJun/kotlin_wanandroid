@@ -6,5 +6,6 @@ package com.toast.wanandroid.http.service
  * @description
  */
 data class ServiceManager (val userService: UserService,
-                            val loginService: LoginService
+                           val loginService: LoginService,
+                           val articleService: ArticleService
 )

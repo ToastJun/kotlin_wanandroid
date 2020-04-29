@@ -32,6 +32,4 @@ interface LoginService {
     @GET("/user/logout/json")
     fun logout(): Response<String>
 
-    @GET("/article/list/0/json")
-    suspend fun fetch(): Response<BaseResponse<ArticleInfoList>>
 }
