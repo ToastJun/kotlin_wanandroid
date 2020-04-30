@@ -13,7 +13,7 @@ data class ArticleInfoList(
     var pageCount: Int,
     var size: Int,
     var total: Int,
-    var datas: List<ArticleInfo>
+    var datas: MutableList<ArticleInfo>
 )
 
 data class ArticleInfo(

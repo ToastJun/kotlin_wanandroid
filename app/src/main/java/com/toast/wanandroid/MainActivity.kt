@@ -38,7 +38,6 @@ class MainActivity : BaseActivity() {
 
     private val mViewModule: LoginViewModel by instance()
 
-    private lateinit var mAdapter: MainAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,49 +45,10 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initView() {
-        rv_content.layoutManager = LinearLayoutManager(this)
-        mAdapter = MainAdapter()
-        rv_content.adapter = mAdapter
-
-        // 数据观察
-        observe(mViewModule.stateLive) {
-            mAdapter.submitList(it.articleInfoList?.datas)
-        }
     }
 
     private fun initData() {
         mViewModule.login()
-    }
-}
-
-class MainAdapter(
-    itemCallback: DiffCallback = DiffCallback()
-): ListAdapter<ArticleInfo, MainAdapter.ViewHolder>(itemCallback) {
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_rv_article, parent, false))
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(position, getItem(position))
-    }
-
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
-
-        fun bind(position: Int, data: ArticleInfo) {
-            itemView.tvTitle.text = data.title
-            itemView.tvDesc.text = data.desc
-            // 没有作者则显示分享者
-            itemView.tvAuthor.text = if(data.author.isNotEmpty()) "by ${data.author}"  else "share by ${data.shareUser}"
-            itemView.tvNiceDate.text = data.niceDate
-        }
-    }
-
-    class DiffCallback : ItemCallback<ArticleInfo>() {
-        override fun areItemsTheSame(oldItem: ArticleInfo, newItem: ArticleInfo): Boolean = oldItem.id == newItem.id
-
-        override fun areContentsTheSame(oldItem: ArticleInfo, newItem: ArticleInfo): Boolean = oldItem == newItem
-
     }
 }
 
