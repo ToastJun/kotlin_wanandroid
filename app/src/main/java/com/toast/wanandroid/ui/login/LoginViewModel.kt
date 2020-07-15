@@ -5,7 +5,6 @@ import androidx.lifecycle.*
 import com.orhanobut.logger.Logger
 import com.toast.core.base.viewmodel.BaseViewModel
 import com.toast.core.ext.postNext
-import com.toast.wanandroid.entity.ArticleInfoList
 import com.toast.wanandroid.repository.LoginRepository
 import kotlinx.coroutines.launch
 

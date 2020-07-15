@@ -20,7 +20,7 @@
     </style>
 
 
-    <style name="Base.Theme.WanAndroid" parent="Theme.MaterialComponents.NoActionBar">
+    <style name="Base.Theme.WanAndroid" parent="Theme.MaterialComponents.Light.NoActionBar">
 
     </style>
 </resources>

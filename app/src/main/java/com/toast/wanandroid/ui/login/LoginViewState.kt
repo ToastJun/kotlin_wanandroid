@@ -9,13 +9,15 @@ import com.toast.wanandroid.entity.ArticleInfoList
  */
 data class LoginViewState(
     var isLoading: Boolean,
-    var articleInfoList: ArticleInfoList?
+    var articleInfoList: ArticleInfoList?,
+    var throwable: Throwable?
 ) {
     companion object {
         fun initial(): LoginViewState {
             return LoginViewState(
                 isLoading = false,
-                articleInfoList = null
+                articleInfoList = null,
+                throwable = null
             )
         }
     }

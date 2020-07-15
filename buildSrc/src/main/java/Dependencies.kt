@@ -82,4 +82,8 @@ object Dependencies {
     const val junit = "junit:junit:4.12"
     const val androidJunit = "androidx.test.ext:junit:1.1.1"
     const val androidTestEspresso = "androidx.test.espresso:espresso-core:3.2.0"
+
+    const val loadSir = "com.kingja.loadsir:loadsir:1.3.8"
+
+    const val mmkv = "com.tencent:mmkv-static:1.2.1"
 }

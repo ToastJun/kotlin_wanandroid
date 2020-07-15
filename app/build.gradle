@@ -74,6 +74,11 @@ dependencies {
     // 下拉刷新库
     implementation Dependencies.smartrefresh
 
+    // loadSir
+    implementation Dependencies.loadSir
+
+    implementation Dependencies.mmkv
+
     implementation project(':core')
 
     // test

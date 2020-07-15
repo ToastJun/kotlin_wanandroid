@@ -21,7 +21,20 @@ class LoginRepository(
 
     // 登录
     fun login(username: String, password: String): Results<UserInfo> {
-        return remoteDataSource.login(username, password)
+        val userInfo = remoteDataSource.login(username, password)
+        when (userInfo) {
+            is Results.Failure -> {}
+            is Results.Success -> {
+                // 保存用户信息到本地
+                localDataSource.saveUserInfo(userInfo.data)
+            }
+        }
+        return userInfo
+    }
+
+    // 是否登录
+    fun isLogin(): Boolean {
+        return localDataSource.isLogin()
     }
 
 }
@@ -35,6 +48,18 @@ class LoginRemoteDataSource(private val serviceManager: ServiceManager): IRemote
 
 }
 
-class LoginLocalDataSource(): ILocalDataSource {
+class LoginLocalDataSource(
+    private val userInfoRepository: UserInfoRepository
+): ILocalDataSource {
 
+    /**
+     * 根据本地token判断是否已经登录
+     */
+    fun isLogin(): Boolean {
+        return userInfoRepository.accessToken.isNotEmpty()
+    }
+
+    fun saveUserInfo(userInfo: UserInfo) {
+        userInfoRepository.username = userInfo.username
+    }
 }

@@ -1,6 +1,7 @@
 package com.toast.wanandroid.base
 
 import android.content.Context
+import com.tencent.mmkv.MMKV
 import com.toast.core.base.BaseApplication
 import com.toast.wanandroid.di.httpClientModule
 import com.toast.wanandroid.di.serviceModule
@@ -26,5 +27,10 @@ class ToastApp: BaseApplication() {
 
     override fun onCreate() {
         super.onCreate()
+        initMMKV()
+    }
+
+    private fun initMMKV() {
+        MMKV.initialize(this)
     }
 }
