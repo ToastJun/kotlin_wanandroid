@@ -85,5 +85,7 @@ object Dependencies {
 
     const val loadSir = "com.kingja.loadsir:loadsir:1.3.8"
 
+    const val cookieJar = "com.github.franmontiel:PersistentCookieJar:v1.0.1"
+
     const val mmkv = "com.tencent:mmkv-static:1.2.1"
 }

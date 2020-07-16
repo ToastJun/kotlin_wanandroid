@@ -1,6 +1,5 @@
 package com.toast.wanandroid.http.service
 
-import com.toast.wanandroid.entity.ArticleInfoList
 import com.toast.wanandroid.entity.user.UserInfo
 import com.toast.wanandroid.http.bean.BaseResponse
 import retrofit2.Response
@@ -21,7 +20,7 @@ interface LoginService {
      */
     @POST("/user/login")
     @FormUrlEncoded
-    fun login(
+    suspend fun login(
         @Field(value="username") username: String,
         @Field(value="password") password: String
     ): Response<BaseResponse<UserInfo>>

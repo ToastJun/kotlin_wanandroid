@@ -1,6 +1,6 @@
 package com.toast.wanandroid.ui.login
 
-import com.toast.wanandroid.entity.ArticleInfoList
+import com.toast.wanandroid.entity.user.UserInfo
 
 /**
  * @author toast
@@ -8,15 +8,15 @@ import com.toast.wanandroid.entity.ArticleInfoList
  * @description
  */
 data class LoginViewState(
-    var isLoading: Boolean,
-    var articleInfoList: ArticleInfoList?,
-    var throwable: Throwable?
+    val isLoading: Boolean,
+    val userInfo: UserInfo?,
+    val throwable: Throwable?
 ) {
     companion object {
         fun initial(): LoginViewState {
             return LoginViewState(
                 isLoading = false,
-                articleInfoList = null,
+                userInfo = null,
                 throwable = null
             )
         }

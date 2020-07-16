@@ -4,6 +4,7 @@ import android.content.Context
 import com.tencent.mmkv.MMKV
 import com.toast.core.base.BaseApplication
 import com.toast.wanandroid.di.httpClientModule
+import com.toast.wanandroid.di.kodeinGlobalRepositoriesModule
 import com.toast.wanandroid.di.serviceModule
 import org.kodein.di.Kodein
 import org.kodein.di.android.x.androidXModule
@@ -23,14 +24,20 @@ class ToastApp: BaseApplication() {
 
         import(httpClientModule)
         import(serviceModule)
+        import(kodeinGlobalRepositoriesModule)
     }
 
     override fun onCreate() {
         super.onCreate()
+        INSTANCE = this
         initMMKV()
     }
 
     private fun initMMKV() {
         MMKV.initialize(this)
+    }
+
+    companion object {
+        lateinit var INSTANCE: ToastApp
     }
 }

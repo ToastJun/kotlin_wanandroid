@@ -1,6 +1,10 @@
 package com.toast.wanandroid.di
 
+import com.franmontiel.persistentcookiejar.PersistentCookieJar
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 import com.toast.wanandroid.BuildConfig
+import com.toast.wanandroid.base.ToastApp
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -53,6 +57,7 @@ val httpClientModule = Kodein.Module(HTTP_CLIENT_MODULE_TAG, init = {
         instance<OkHttpClient.Builder>()
             .connectTimeout(TIME_OUT_SECONDS.toLong(), TimeUnit.SECONDS)
             .readTimeout(TIME_OUT_SECONDS.toLong(), TimeUnit.SECONDS)
+            .cookieJar(PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(ToastApp.INSTANCE)))    // 添加 cookie 缓存
             .addInterceptor(instance<Interceptor>(HTTP_CLIENT_MODULE_INTERCEPTOR_LOG_TAG))
             .build()
     }

@@ -1,10 +1,11 @@
 package com.toast.wanandroid.ui.login
 
-import android.util.Log
 import androidx.lifecycle.*
 import com.orhanobut.logger.Logger
 import com.toast.core.base.viewmodel.BaseViewModel
 import com.toast.core.ext.postNext
+import com.toast.wanandroid.http.Errors
+import com.toast.wanandroid.http.Results
 import com.toast.wanandroid.repository.LoginRepository
 import kotlinx.coroutines.launch
 
@@ -29,10 +30,29 @@ class LoginViewModel(
         }
     }
 
-    fun login() {
-        viewModelScope.launch {
-            _stateLiveData.postNext {
-                it.copy(isLoading = false, articleInfoList = null)
+    fun login(username: String?, password: String?) {
+        // 判断用户输入的用户名或密码是否为空
+        when (username.isNullOrEmpty() || password.isNullOrEmpty()) {
+            true -> {
+                _stateLiveData.postNext { state ->
+                    state.copy(isLoading = false, userInfo = null, throwable = Errors.EmptyInputError("username or password is empty"))
+                }
+            }
+            false -> {
+                // 开始请求服务器进行登录
+                viewModelScope.launch {
+                    Logger.e("start login")
+                    val userInfoResult = loginRepo.login(username, password)
+                    Logger.e("login end result=$userInfoResult")
+                    when (userInfoResult) {
+                        is Results.Success -> _stateLiveData.postNext {
+                            it.copy(isLoading = false, userInfo = userInfoResult.data, throwable = null)
+                        }
+                        is Results.Failure -> _stateLiveData.postNext {
+                            it.copy(isLoading = false, userInfo = null, throwable = userInfoResult.error)
+                        }
+                    }
+                }
             }
         }
     }
