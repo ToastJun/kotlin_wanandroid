@@ -26,7 +26,7 @@ class MainViewModel(
      */
     fun checkIsLogin() {
         _stateLiveData.postNext {
-            it.copy(isFinishInit = true, autoLoginEvent = AutoLoginEvent(userInfoRepository.accessToken.isNotEmpty()))
+            it.copy(isFinishInit = true, autoLoginEvent = AutoLoginEvent(userInfoRepository.hasLogin()))
         }
     }
 }

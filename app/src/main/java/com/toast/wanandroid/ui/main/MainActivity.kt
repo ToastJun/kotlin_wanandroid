@@ -41,7 +41,7 @@ class MainActivity : BaseActivity() {
             when (state.autoLoginEvent.hasLogin && state.isFinishInit) {
                 true -> startActivity(Intent(this, HomeActivity::class.java))
                 false -> startActivity(Intent(this, LoginActivity::class.java))
-            }
+            }.also { finish() }
         }
     }
 }

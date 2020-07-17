@@ -2,6 +2,7 @@ package com.toast.wanandroid.ui.web
 
 import com.toast.core.base.view.BaseActivity
 import com.toast.wanandroid.R
+import kotlinx.android.synthetic.main.activity_webview.*
 import org.kodein.di.Kodein
 
 /**
@@ -17,7 +18,11 @@ class WebviewActivity : BaseActivity() {
     }
 
     override fun initView() {
-
+        WebviewUtils.init(this)
+        WebviewUtils.setDefaultWebSetting(webview)
+        // 根据url加载
+        val url = intent.getStringExtra("url")
+        webview.loadUrl(url)
     }
 
 }

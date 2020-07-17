@@ -15,7 +15,11 @@ import org.kodein.di.generic.provider
 import org.kodein.di.generic.singleton
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.security.SecureRandom
+import java.security.cert.X509Certificate
 import java.util.concurrent.TimeUnit
+import javax.net.ssl.*
+import java.security.cert.CertificateException
 
 /**
  * @author toast
@@ -59,6 +63,50 @@ val httpClientModule = Kodein.Module(HTTP_CLIENT_MODULE_TAG, init = {
             .readTimeout(TIME_OUT_SECONDS.toLong(), TimeUnit.SECONDS)
             .cookieJar(PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(ToastApp.INSTANCE)))    // 添加 cookie 缓存
             .addInterceptor(instance<Interceptor>(HTTP_CLIENT_MODULE_INTERCEPTOR_LOG_TAG))
+                // 忽略 SSL安全证书 调试时用于抓包使用
+            .sslSocketFactory(getSSLFactory(), object : X509TrustManager {
+                override fun getAcceptedIssuers(): Array<X509Certificate> {
+                    return arrayOf()
+                }
+
+                @Throws(CertificateException::class)
+                override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) {
+                }
+
+                @Throws(CertificateException::class)
+                override fun checkServerTrusted(chain: Array<X509Certificate>, authType: String) {
+                }
+            })
+            .hostnameVerifier(object : HostnameVerifier{
+                override fun verify(hostname: String?, session: SSLSession?): Boolean {
+                    return true
+                }
+            })
             .build()
     }
+
+
 })
+
+fun getSSLFactory(): SSLSocketFactory {
+    //         Create a trust manager that does not validate certificate chains
+    val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
+        override fun getAcceptedIssuers(): Array<X509Certificate> {
+            return arrayOf()
+        }
+
+        @Throws(CertificateException::class)
+        override fun checkClientTrusted(chain: Array<X509Certificate>, authType: String) {
+        }
+
+        @Throws(CertificateException::class)
+        override fun checkServerTrusted(chain: Array<X509Certificate>, authType: String) {
+        }
+    })
+
+    // Install the all-trusting trust manager
+    val sslContext = SSLContext.getInstance("SSL")
+    sslContext.init(null, trustAllCerts, SecureRandom())
+    // Create an ssl socket factory with our all-trusting manager
+    return sslContext.socketFactory
+}

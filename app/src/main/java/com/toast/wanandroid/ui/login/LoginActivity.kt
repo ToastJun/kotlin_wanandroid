@@ -1,10 +1,12 @@
 package com.toast.wanandroid.ui.login
 
+import android.content.Intent
 import com.toast.core.base.view.BaseActivity
 import com.toast.core.ext.observe
 import com.toast.core.ext.toastSafe
 import com.toast.wanandroid.R
 import com.toast.wanandroid.http.Errors
+import com.toast.wanandroid.ui.home.HomeActivity
 import kotlinx.android.synthetic.main.activity_login.*
 import org.kodein.di.Kodein
 import org.kodein.di.android.retainedKodein
@@ -52,6 +54,11 @@ class LoginActivity : BaseActivity() {
             }
         }
 
-
+        // 登录成功, 跳转到首页
+        if (state.userInfo != null) {
+            toastSafe("登录成功!")
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        }
     }
 }

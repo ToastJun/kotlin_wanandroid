@@ -1,7 +1,6 @@
 package com.toast.wanandroid.ui.login
 
 import androidx.lifecycle.*
-import com.orhanobut.logger.Logger
 import com.toast.core.base.viewmodel.BaseViewModel
 import com.toast.core.ext.postNext
 import com.toast.wanandroid.http.Errors
@@ -41,10 +40,7 @@ class LoginViewModel(
             false -> {
                 // 开始请求服务器进行登录
                 viewModelScope.launch {
-                    Logger.e("start login")
-                    val userInfoResult = loginRepo.login(username, password)
-                    Logger.e("login end result=$userInfoResult")
-                    when (userInfoResult) {
+                    when (val userInfoResult = loginRepo.login(username, password)) {
                         is Results.Success -> _stateLiveData.postNext {
                             it.copy(isLoading = false, userInfo = userInfoResult.data, throwable = null)
                         }

@@ -1,10 +1,8 @@
 package com.toast.wanandroid.repository
 
-import com.orhanobut.logger.Logger
 import com.toast.core.base.repository.BaseRepositoryBoth
 import com.toast.core.base.repository.ILocalDataSource
 import com.toast.core.base.repository.IRemoteDataSource
-import com.toast.wanandroid.entity.ArticleInfoList
 import com.toast.wanandroid.entity.user.UserInfo
 import com.toast.wanandroid.http.Results
 import com.toast.wanandroid.http.processApiResponse
@@ -23,7 +21,6 @@ class LoginRepository(
     // 登录
     suspend fun login(username: String, password: String): Results<UserInfo> {
         val userInfo = remoteDataSource.login(username, password)
-        Logger.e(userInfo.toString())
         when (userInfo) {
             is Results.Failure -> {}
             is Results.Success -> {
@@ -35,8 +32,8 @@ class LoginRepository(
     }
 
     // 是否登录
-    fun isLogin(): Boolean {
-        return localDataSource.isLogin()
+    fun hasLogin(): Boolean {
+        return localDataSource.hasLogin()
     }
 
 }
@@ -55,13 +52,16 @@ class LoginLocalDataSource(
 ): ILocalDataSource {
 
     /**
-     * 根据本地token判断是否已经登录
+     * 根据本地存放的userId判断是否已经登录
      */
-    fun isLogin(): Boolean {
-        return userInfoRepository.accessToken.isNotEmpty()
+    fun hasLogin(): Boolean {
+        return userInfoRepository.hasLogin()
     }
 
     fun saveUserInfo(userInfo: UserInfo) {
-        userInfoRepository.username = userInfo.username
+        userInfoRepository.apply {
+            username = userInfo.username
+            userId = userInfo.id
+        }
     }
 }

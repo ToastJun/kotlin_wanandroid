@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
+
+    <ImageView
+        android:id="@+id/ivUserAvatar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:src="@mipmap/ic_launcher_round"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/ivUserAvatar"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="10dp"
+        android:text="UserName"
+        android:textSize="23sp"
+        android:textColor="@color/color_normal_text"/>
+
+    <TextView
+        android:id="@+id/tvUserSign"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvUserName"
+        app:layout_constraintStart_toStartOf="@id/tvUserName"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/color_gray"
+        android:textSize="12sp"
+        android:text="未设置签名"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_arrow_right_gray"
+        app:layout_constraintTop_toTopOf="@id/ivUserAvatar"
+        app:layout_constraintBottom_toBottomOf="@id/ivUserAvatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutSignIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/ivUserAvatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/layoutSomething"
+        android:background="@drawable/shape_gradient_gray_white_bg"
+        >
+
+        <ImageView
+            android:id="@+id/ivSignIn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitXY"
+            android:layout_margin="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@mipmap/ic_launcher_round"/>
+
+        <TextView
+            android:id="@+id/tvSignTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/ivSignIn"
+            app:layout_constraintBottom_toTopOf="@id/tvSignDesc"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="每日打卡"
+            android:textColor="@color/color_black_text"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"/>
+
+        <TextView
+            android:id="@+id/tvSignDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvSignTitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvSignTitle"
+            android:text="开始收集你的七龙珠"
+            android:textSize="12sp"
+            android:textColor="@color/color_gray"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutSomething"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/layoutSignIn"
+        app:layout_constraintTop_toTopOf="@id/layoutSignIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/shape_gradient_gray_white_bg"
+        >
+
+        <ImageView
+            android:id="@+id/ivSomething"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:scaleType="fitXY"
+            android:layout_margin="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:src="@mipmap/ic_launcher_round"/>
+
+        <TextView
+            android:id="@+id/tvSomethingTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/ivSomething"
+            app:layout_constraintBottom_toTopOf="@id/tvSomethingDesc"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="每日打卡"
+            android:textColor="@color/color_black_text"
+            android:textSize="14sp"
+            android:textStyle="bold|italic"/>
+
+        <TextView
+            android:id="@+id/tvSomethingDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/tvSomethingTitle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@id/tvSomethingTitle"
+            android:text="开始收集你的七龙珠"
+            android:textSize="12sp"
+            android:textColor="@color/color_gray"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
