@@ -1,6 +1,7 @@
 package com.toast.wanandroid.ui.main
 
 import android.content.Intent
+import android.util.Log
 import com.toast.core.base.view.BaseActivity
 import com.toast.core.ext.observe
 import com.toast.wanandroid.R
@@ -23,12 +24,13 @@ class MainActivity : BaseActivity() {
     private val mViewModel: MainViewModel by instance()
 
     override fun initView() {
+        Log.e("test", "initView")
         initData()
     }
 
     private fun initData() {
         binds()
-        mViewModel.checkIsLogin()
+//        mViewModel.checkIsLogin()
     }
 
     private fun binds() {

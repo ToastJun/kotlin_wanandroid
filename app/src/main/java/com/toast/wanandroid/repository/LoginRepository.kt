@@ -62,6 +62,7 @@ class LoginLocalDataSource(
         userInfoRepository.apply {
             username = userInfo.username
             userId = userInfo.id
+            this.userInfo = userInfo
         }
     }
 }

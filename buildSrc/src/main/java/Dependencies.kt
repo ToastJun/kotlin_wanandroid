@@ -88,4 +88,6 @@ object Dependencies {
     const val cookieJar = "com.github.franmontiel:PersistentCookieJar:v1.0.1"
 
     const val mmkv = "com.tencent:mmkv-static:1.2.1"
+
+    const val adapterHelper = "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4"
 }

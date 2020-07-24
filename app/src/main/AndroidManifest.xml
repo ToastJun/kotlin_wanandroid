@@ -23,6 +23,7 @@
         <activity android:name=".ui.home.HomeActivity"/>
         <activity android:name=".ui.login.LoginActivity" />
         <activity android:name=".ui.web.WebviewActivity" />
+        <activity android:name=".ui.mine.coin.CoinLogActivity" />
     </application>
 
 </manifest>

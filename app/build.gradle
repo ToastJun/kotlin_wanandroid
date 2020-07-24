@@ -81,6 +81,8 @@ dependencies {
 
     implementation Dependencies.cookieJar
 
+    implementation Dependencies.adapterHelper
+
     implementation project(':core')
 
     // test

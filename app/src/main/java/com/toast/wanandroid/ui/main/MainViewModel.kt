@@ -1,12 +1,12 @@
 package com.toast.wanandroid.ui.main
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
+import android.util.Log
+import androidx.lifecycle.*
 import com.toast.core.base.viewmodel.BaseViewModel
 import com.toast.core.ext.postNext
 import com.toast.wanandroid.repository.UserInfoRepository
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 /**
  * @author toast
@@ -17,6 +17,15 @@ class MainViewModel(
     private val userInfoRepository: UserInfoRepository
 ) : BaseViewModel(){
 
+    init {
+        Log.e("test", "MainViewModel init")
+        viewModelScope.launch {
+            // 进来延迟2000ms
+            delay(2000)
+            checkIsLogin()
+        }
+    }
+
     private val _stateLiveData : MutableLiveData<MainViewState> = MutableLiveData(MainViewState.initial())
 
     val stateLiveData: LiveData<MainViewState> = _stateLiveData
@@ -24,7 +33,7 @@ class MainViewModel(
     /**
      * 判断本地是否存有token
      */
-    fun checkIsLogin() {
+    private fun checkIsLogin() {
         _stateLiveData.postNext {
             it.copy(isFinishInit = true, autoLoginEvent = AutoLoginEvent(userInfoRepository.hasLogin()))
         }
