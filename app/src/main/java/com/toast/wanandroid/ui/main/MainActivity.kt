@@ -10,6 +10,7 @@ import android.graphics.BitmapFactory
 import android.os.Build
 import android.provider.Settings
 import androidx.core.app.NotificationCompat
+import android.util.Log
 import com.toast.core.base.view.BaseActivity
 import com.toast.core.ext.observe
 import com.toast.wanandroid.R
@@ -46,9 +47,9 @@ class MainActivity : BaseActivity() {
 
     private fun initData() {
         binds()
+//        mViewModel.checkIsLogin()
         val intent = Intent(this, SmsCodeNotifyService::class.java)
         startService(intent)
-//        mViewModel.checkIsLogin()
     }
 
     private fun binds() {

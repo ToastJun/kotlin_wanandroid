@@ -3,14 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingStart="16dp"
-    android:paddingEnd="16dp">
+    android:padding="16dp">
 
     <ImageView
         android:id="@+id/ivUserAvatar"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        android:src="@mipmap/ic_launcher_round"
+        android:src="@mipmap/ic_user_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -53,7 +52,7 @@
         android:layout_marginTop="30dp"
         app:layout_constraintTop_toBottomOf="@id/ivUserAvatar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/layoutSomething"
+        app:layout_constraintEnd_toStartOf="@id/layoutCoin"
         android:background="@drawable/shape_gradient_gray_white_bg"
         >
 
@@ -66,7 +65,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:src="@mipmap/ic_launcher_round"/>
+            android:src="@mipmap/account_clock_icon"/>
 
         <TextView
             android:id="@+id/tvSignTitle"
@@ -75,6 +74,7 @@
             app:layout_constraintStart_toEndOf="@id/ivSignIn"
             app:layout_constraintBottom_toTopOf="@id/tvSignDesc"
             app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="10dp"
             android:text="每日打卡"
             android:textColor="@color/color_black_text"
             android:textSize="14sp"
@@ -95,9 +95,10 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutSomething"
+        android:id="@+id/layoutCoin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         app:layout_constraintStart_toEndOf="@id/layoutSignIn"
         app:layout_constraintTop_toTopOf="@id/layoutSignIn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -105,7 +106,7 @@
         >
 
         <ImageView
-            android:id="@+id/ivSomething"
+            android:id="@+id/ivCoin"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:scaleType="fitXY"
@@ -113,28 +114,29 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:src="@mipmap/ic_launcher_round"/>
+            android:src="@mipmap/account_draft"/>
 
         <TextView
-            android:id="@+id/tvSomethingTitle"
+            android:id="@+id/tvCoinTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@id/ivSomething"
-            app:layout_constraintBottom_toTopOf="@id/tvSomethingDesc"
+            app:layout_constraintStart_toEndOf="@id/ivCoin"
+            app:layout_constraintBottom_toTopOf="@id/tvCoinDesc"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="每日打卡"
+            android:layout_marginStart="10dp"
+            android:text="你的积分"
             android:textColor="@color/color_black_text"
             android:textSize="14sp"
             android:textStyle="bold|italic"/>
 
         <TextView
-            android:id="@+id/tvSomethingDesc"
+            android:id="@+id/tvCoinDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/tvSomethingTitle"
+            app:layout_constraintTop_toBottomOf="@id/tvCoinTitle"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/tvSomethingTitle"
-            android:text="开始收集你的七龙珠"
+            app:layout_constraintStart_toStartOf="@id/tvCoinTitle"
+            android:text=""
             android:textSize="12sp"
             android:textColor="@color/color_gray"
             />
