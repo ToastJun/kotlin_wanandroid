@@ -20,4 +20,22 @@
         android:textSize="38sp"
         android:textColor="@color/color_white"/>
 
+    <TextView
+        android:id="@+id/tvGoNotifySetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="50dp"
+        android:text="授权通知使用权限"/>
+
+    <TextView
+        android:id="@+id/tvNotify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/tvGoNotifySetting"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="50dp"
+        android:text="弹出一个自定义通知栏"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
