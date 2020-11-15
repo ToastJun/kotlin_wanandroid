@@ -1,5 +1,5 @@
 object Versions {
-    const val androidPlugins = "3.5.3"
+    const val androidPlugins = "4.0.1"
     const val fragmentNav = "2.3.0-alpha01"
 
     const val kotlin = "1.3.61"
@@ -90,4 +90,7 @@ object Dependencies {
     const val mmkv = "com.tencent:mmkv-static:1.2.1"
 
     const val adapterHelper = "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4"
+
+    const val rxjava2 = "io.reactivex.rxjava2:rxjava:2.1.4"
+    const val rxandroid = "io.reactivex.rxjava2:rxandroid:2.0.2"
 }

@@ -20,6 +20,8 @@ android {
         versionName BuildVersions.versionName
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
     }
 
     buildTypes {
@@ -32,6 +34,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+
+        //支持新版java Api
+        coreLibraryDesugaringEnabled true
     }
     // work-runtime-ktx 2.1.0 and above now requires Java 8
     kotlinOptions {
@@ -83,7 +88,13 @@ dependencies {
 
     implementation Dependencies.adapterHelper
 
+    implementation Dependencies.rxjava2
+    implementation Dependencies.rxandroid
+
     implementation project(':core')
+
+    //通过desugaring的过程能够支持部分Java 8 API的语法糖
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.10'
 
     // test
     testImplementation Dependencies.junit

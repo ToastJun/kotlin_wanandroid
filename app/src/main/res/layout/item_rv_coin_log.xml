@@ -11,7 +11,7 @@
         android:layout_height="2dp"
         app:layout_constraintTop_toTopOf="@id/tvDate"
         app:layout_constraintBottom_toBottomOf="@id/tvDate"
-        app:layout_constraintStart_toStartOf="date"
+        app:layout_constraintStart_toStartOf="@id/tvDate"
         android:background="@color/color_gray"
         />
 

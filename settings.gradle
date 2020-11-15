@@ -1,2 +1,3 @@
 rootProject.name='WanAndroid'
-include ':app', ':core', ':buildSrc'
+include ':app', ':core', ':buildSrcKt'
+include ':m_base'
