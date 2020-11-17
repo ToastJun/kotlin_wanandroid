@@ -19,6 +19,9 @@ import org.kodein.di.generic.instance
  */
 
 class LoginActivity : BaseActivity() {
+
+    lateinit var test: String
+
     override val layoutId: Int = R.layout.activity_login
 
     override val kodein: Kodein by retainedKodein {
@@ -33,6 +36,9 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun binds() {
+        if (test is String) {
+
+        }
         btnLogin.setOnClickListener {
             mViewModel.login(etUsername.text.toString(), etPassword.text.toString())
         }

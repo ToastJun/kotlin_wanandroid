@@ -89,6 +89,8 @@ object Dependencies {
 
     const val mmkv = "com.tencent:mmkv-static:1.2.1"
 
+    const val eventbus = "org.greenrobot:eventbus:3.2.0"
+
     const val adapterHelper = "com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4"
 
     const val rxjava2 = "io.reactivex.rxjava2:rxjava:2.1.4"

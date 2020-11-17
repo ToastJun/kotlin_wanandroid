@@ -91,6 +91,8 @@ dependencies {
     implementation Dependencies.rxjava2
     implementation Dependencies.rxandroid
 
+    implementation Dependencies.eventbus
+
     implementation project(':core')
 
     //通过desugaring的过程能够支持部分Java 8 API的语法糖

@@ -33,6 +33,7 @@ const val HTTP_CLIENT_MODULE_INTERCEPTOR_AUTH_TAG = "http_client_module_intercep
 
 const val TIME_OUT_SECONDS = 30
 const val BASE_URL = "https://www.wanandroid.com"
+const val TEST_URL = "http://47.99.158.24:8999"
 
 val httpClientModule = Kodein.Module(HTTP_CLIENT_MODULE_TAG, init = {
 
@@ -42,7 +43,7 @@ val httpClientModule = Kodein.Module(HTTP_CLIENT_MODULE_TAG, init = {
 
     bind<Retrofit>() with singleton {
         instance<Retrofit.Builder>()
-            .baseUrl(BASE_URL)
+            .baseUrl(TEST_URL)
             .client(instance())
             .addConverterFactory(GsonConverterFactory.create())
             .build()

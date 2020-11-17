@@ -36,18 +36,11 @@ class MainActivity : BaseActivity() {
     private val mViewModel: MainViewModel by instance()
 
     override fun initView() {
-        tvGoNotifySetting.setOnClickListener {
-            getNotificationListenerPer()
-        }
-        tvNotify.setOnClickListener {
-            openNotification()
-        }
         initData()
     }
 
     private fun initData() {
         binds()
-//        mViewModel.checkIsLogin()
         val intent = Intent(this, SmsCodeNotifyService::class.java)
         startService(intent)
     }
@@ -69,29 +62,6 @@ class MainActivity : BaseActivity() {
     private fun getNotificationListenerPer() {
         val intent = Intent(Settings.ACTION_NOTIFICATION_LISTENER_SETTINGS)
         startActivity(intent)
-    }
-
-    var num:Int = 1
-
-    private fun openNotification() {
-        val notification = NotificationCompat.Builder(this, "myChannelId")
-            .setTicker("我是Ticker")
-            .setContentText("我是ContentText")
-            .setContentTitle("我是ContentTitle")
-            .setSmallIcon(R.mipmap.ic_launcher)
-//            .setLargeIcon(BitmapFactory.decodeResource(resources, R.mipmap.ic_launcher))
-            .setWhen(System.currentTimeMillis())
-            .setDefaults(Notification.DEFAULT_ALL)
-            .setAutoCancel(true)
-            .build()
-        val notificationManager: NotificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel = NotificationChannel("myChannelId", "channel name", NotificationManager.IMPORTANCE_HIGH)
-            channel.description = "channel description"
-            notificationManager.createNotificationChannel(channel)
-        }
-
-        notificationManager.notify(num++, notification)
     }
 }
 

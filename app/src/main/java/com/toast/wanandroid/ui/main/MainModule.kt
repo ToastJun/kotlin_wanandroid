@@ -20,7 +20,7 @@ val kodeinMainModule = Kodein.Module(MAIN_MODULE_TAG) {
     // MainViewModel
     bind<MainViewModel>() with scoped<AppCompatActivity>(AndroidLifecycleScope).singleton {
         // 使用 ViewModelFactory 提供实例
-        ViewModelProvider(this.context, MainViewModelFactory(instance())).get(MainViewModel::class.java)
+        ViewModelProvider(this.context, MainViewModelFactory(instance(), instance())).get(MainViewModel::class.java)
     }
 
 
