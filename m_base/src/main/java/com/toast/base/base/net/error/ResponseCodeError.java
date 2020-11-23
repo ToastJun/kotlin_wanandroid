@@ -7,32 +7,33 @@ import com.toast.base.base.net.error.base.BaseNetError;
 import com.toast.base.base.net.http.IApiViewModel;
 import com.toast.base.base.net.http.request.BaseRequest;
 
+import retrofit2.Response;
+
 /**
  * desc: <br/>
- * time: 2020/11/17 19:26 <br/>
+ * time: 2020/11/23 18:13 <br/>
  * author: toast <br/>
  * since: V 1.0 <br/>
  */
-public class ResultError extends BaseNetError {
+public class ResponseCodeError extends BaseNetError {
 
-    public ResultError(Throwable throwable) {
-        super(throwable);
+    @NonNull
+    private Response response;
+
+    public ResponseCodeError(@NonNull Response response) {
+        super(new IllegalStateException("通信错误! response.code: " + response.code()));
+        this.response = response;
     }
 
     @NonNull
     @Override
     public String key() {
-        return "ResultError";
-    }
-
-    @Nullable
-    @Override
-    public String getCustomMessage() {
-        return "通信有问题，如：无网络、服务器连接不上等";
+        return "ResponseCodeError";
     }
 
     @Override
     public void onError(@NonNull BaseRequest<?> request, @Nullable IApiViewModel apiViewModel) {
         super.onError(request, apiViewModel);
+        // TODO: 2020/11/23 TOAST 调用callViewAction，可用于弹出提示框显示错误信息
     }
 }

@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
 
+import com.toast.base.base.net.http.IApiViewModel;
 import com.toast.base.base.net.http.request.BaseRequest;
 
 /**
@@ -24,7 +25,7 @@ public abstract class BaseNetError extends Throwable implements INetError {
     @CallSuper
     @Override
     @WorkerThread
-    public void onError(@NonNull BaseRequest<?> request) {
+    public void onError(@NonNull BaseRequest<?> request, @Nullable IApiViewModel apiViewModel) {
         // TODO: 2020/11/17 TOAST 注意此处需要判断是否为测试环境
         String errorMsg = "key:" + key()
                 + ", customMsg:" + getCustomMessage()

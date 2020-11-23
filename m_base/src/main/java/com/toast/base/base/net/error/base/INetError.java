@@ -1,8 +1,10 @@
 package com.toast.base.base.net.error.base;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.annotation.WorkerThread;
 
+import com.toast.base.base.net.http.IApiViewModel;
 import com.toast.base.base.net.http.request.BaseRequest;
 
 /**
@@ -11,7 +13,7 @@ import com.toast.base.base.net.http.request.BaseRequest;
  * author: toast <br/>
  * since: V 1.0 <br/>
  */
-interface INetError {
+public interface INetError {
 
     /**
      * 错误key值
@@ -25,5 +27,5 @@ interface INetError {
      * @param request 发生错误的请求
      */
     @WorkerThread
-    void onError(@NonNull BaseRequest<?> request);
+    void onError(@NonNull BaseRequest<?> request, @Nullable IApiViewModel apiViewModel);
 }
